@@ -2,7 +2,6 @@
 
 all: compile
 
-
 compile: out
 	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/Behaviours/*.java
 	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/AIAExamples/communication/*.java
@@ -14,7 +13,6 @@ gui:
 
 hello-world:
 	java -cp lib/jade.jar:out/ jade.Boot -local-host 127.0.0.1 -container HelloTio:Behaviours.HelloWorldAgent\("Que","pasa","tio"\) -local-host 127.0.0.1
-
 
 out:
 	mkdir out
