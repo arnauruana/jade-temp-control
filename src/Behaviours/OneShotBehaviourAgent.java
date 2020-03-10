@@ -3,8 +3,7 @@ package Behaviours;
 
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
-
-import java.util.Random;
+import jade.lang.acl.ACLMessage;
 
 
 /**
@@ -26,24 +25,25 @@ public class OneShotBehaviourAgent extends Agent
 
         public void action()
         {
-            String msg;
+            ACLMessage msg = receive();
 
-            Random rand = new Random();
-            int temp = rand.nextInt(41) - 10;
-            System.out.println(temp);
+            if (msg != null)
+                System.out.println(msg);
 
+            int temp = 20;
+            String str;
             if (temp < this.TEMP_MIN)
             {
-                msg = "Heating on";
+                str = "Heating on";
             }
             else if (temp > this.TEMP_MAX)
             {
-                msg = "Refrigeration on";
+                str = "Refrigeration on";
             }
             else {
-                msg = "Idle temperature";
+                str = "Idle temperature";
             }
-            System.out.println(msg);
+            System.out.println(str);
         }
 
         public int onEnd()
