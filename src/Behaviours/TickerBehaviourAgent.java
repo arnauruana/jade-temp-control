@@ -40,7 +40,7 @@ public class TickerBehaviourAgent extends Agent
 
     protected void setup()
     {
-        Thermometer t = new Thermometer(this, 500);
+        Thermometer t = new Thermometer(this, 10000);
         this.addBehaviour(t);
     }
 }
