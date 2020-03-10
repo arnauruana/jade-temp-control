@@ -1,45 +1,61 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Behaviours;
+
 
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
 
+import java.util.Random;
+
+
 /**
- * @author igomez
+ * @author Arnau Ruana | @arnauruana
  */
-public class OneShotBehaviourAgent extends Agent {
+public class OneShotBehaviourAgent extends Agent
+{
+    public class Thermostat extends OneShotBehaviour
+    {
+        private static final int TEMP_MAX = 25;
+        private static final int TEMP_MIN = 15;
 
-    public class HelloWorldOneShotBehaviour extends OneShotBehaviour {
-        String message;
-        int count_chocula;
+        public Thermostat() {}
 
-        public HelloWorldOneShotBehaviour() {
-
+        public void onStart()
+        {
+            System.out.println("Initialized agent: thermostat");
         }
 
-        public void onStart() {
-            this.message = "Agent " + myAgent + " with HelloWorldOneShotBehaviour in action!!";
-            count_chocula = 0;
+        public void action()
+        {
+            String msg;
+
+            Random rand = new Random();
+            int temp = rand.nextInt(41) - 10;
+            System.out.println(temp);
+
+            if (temp < this.TEMP_MIN)
+            {
+                msg = "Heating on";
+            }
+            else if (temp > this.TEMP_MAX)
+            {
+                msg = "Refrigeration on";
+            }
+            else {
+                msg = "Idle temperature";
+            }
+            System.out.println(msg);
         }
 
-        public int onEnd() {
-            System.out.println("I have done " + count_chocula + " iterations");
-            return count_chocula;
+        public int onEnd()
+        {
+            System.out.println("Finalized agent: thermostat");
+            return 0;
         }
-
-        public void action() {
-            System.out.println(this.message + count_chocula);
-        }
-
     }
 
-    protected void setup() {
-
-        HelloWorldOneShotBehaviour b = new HelloWorldOneShotBehaviour();
-        this.addBehaviour(b);
+    protected void setup()
+    {
+        Thermostat t = new Thermostat();
+        this.addBehaviour(t);
     }
 }
