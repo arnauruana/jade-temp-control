@@ -15,6 +15,8 @@ import java.util.Random;
  */
 public class TickerBehaviourAgent extends Agent
 {
+    private static final int TICK_PERIOD = 10000; // [ms]
+
     public class Thermometer extends TickerBehaviour
     {
         private Random rand = new Random();
@@ -46,7 +48,7 @@ public class TickerBehaviourAgent extends Agent
 
     protected void setup()
     {
-        Thermometer t = new Thermometer(this, 10000);
+        Thermometer t = new Thermometer(this, this.TICK_PERIOD);
         this.addBehaviour(t);
     }
 }

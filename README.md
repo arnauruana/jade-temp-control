@@ -1,21 +1,26 @@
-# Agents - Thermostat
+# Agents - Temperature control
 
-## Linux shell
+## Linux
 
 To compile:
 
 ```bash
-$ make
+make
 ```
 
 To run the platform and GUI:
 
 ```bash
-$ make run
+make gui
 ```
 
-To run the HelloWorldAgent:
+To generate the agents:
 
 ```bash
-$ make hello-world
+make run
+```
+
+To clean the project directory:
+```bash
+make clean
 ```
