@@ -3,9 +3,7 @@
 all: compile
 
 compile: out
-	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/Behaviours/*.java
-	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/AIAExamples/communication/*.java
-	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/Protocols/*.java
+	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/behaviours/*.java
 
 run:
 	java -cp lib/jade.jar:out/ jade.Boot -gui -local-host 127.0.0.1 &

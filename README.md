@@ -11,7 +11,7 @@ $ make
 To run the platform and GUI:
 
 ```bash
-$ make gui
+$ make run
 ```
 
 To run the HelloWorldAgent:

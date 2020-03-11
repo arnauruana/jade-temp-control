@@ -1,4 +1,4 @@
-package Behaviours;
+package behaviours;
 
 
 import jade.core.AID;

@@ -1,17 +1,20 @@
-package Behaviours;
+package behaviours;
 
 
+import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.OneShotBehaviour;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+
+import java.lang.Integer;
 
 
 /**
  * @author Arnau Ruana | @arnauruana
  */
-public class OneShotBehaviourAgent extends Agent
+public class CyclicBehaviourAgent extends Agent
 {
-    public class Thermostat extends OneShotBehaviour
+    public class Thermostat extends CyclicBehaviour
     {
         private static final int TEMP_MAX = 25;
         private static final int TEMP_MIN = 15;
@@ -28,22 +31,26 @@ public class OneShotBehaviourAgent extends Agent
             ACLMessage msg = receive();
 
             if (msg != null)
-                System.out.println(msg);
+            {
+                int temp = Integer.parseInt(msg.getContent());
 
-            int temp = 20;
-            String str;
-            if (temp < this.TEMP_MIN)
+                if (temp < this.TEMP_MIN)
+                {
+                    System.out.println("Heating on");
+                }
+                else if (temp > this.TEMP_MAX)
+                {
+                    System.out.println("Refrigeration on");
+                }
+                else
+                {
+                    System.out.println("Suitable temperature");
+                }
+            }
+            else
             {
-                str = "Heating on";
+                block();
             }
-            else if (temp > this.TEMP_MAX)
-            {
-                str = "Refrigeration on";
-            }
-            else {
-                str = "Idle temperature";
-            }
-            System.out.println(str);
         }
 
         public int onEnd()
