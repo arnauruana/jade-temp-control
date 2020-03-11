@@ -1,4 +1,4 @@
-package behaviours;
+package behaviour;
 
 
 import jade.core.AID;
@@ -17,6 +17,8 @@ public class TickerBehaviourAgent extends Agent
 {
     public class Thermometer extends TickerBehaviour
     {
+        private Random rand = new Random();
+
         public Thermometer(Agent agent, int period)
         {
             super(agent, period);
@@ -24,25 +26,20 @@ public class TickerBehaviourAgent extends Agent
 
         public void onStart()
         {
-            System.out.println("Initialized agent: thermometer");
+            System.out.println("[THERMOMETER]\tinitialized");
         }
 
         public void onTick()
         {
-            Random rand = new Random();
-            int temp = rand.nextInt(41) - 10;
-
             ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-            msg.setContent(Integer.toString(temp));
             msg.addReceiver(new AID("thermostat", AID.ISLOCALNAME));
-
-            System.out.println("Send random temperature: " + temp);
+            msg.setContent(Integer.toString(this.rand.nextInt(41) - 10));
             send(msg);
         }
 
         public int onEnd()
         {
-            System.out.println("Finalized agent: thermometer");
+            System.out.println("[THERMOMETER]\tfinalized");
             return 0;
         }
     }

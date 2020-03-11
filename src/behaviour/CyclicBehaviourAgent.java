@@ -1,4 +1,4 @@
-package behaviours;
+package behaviour;
 
 
 import jade.core.AID;
@@ -7,6 +7,7 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 import java.lang.Integer;
+import java.lang.String;
 
 
 /**
@@ -23,7 +24,7 @@ public class CyclicBehaviourAgent extends Agent
 
         public void onStart()
         {
-            System.out.println("Initialized agent: thermostat");
+            System.out.println("[THERMOSTAT]\tinitialized");
         }
 
         public void action()
@@ -32,20 +33,22 @@ public class CyclicBehaviourAgent extends Agent
 
             if (msg != null)
             {
+                String out;
                 int temp = Integer.parseInt(msg.getContent());
 
                 if (temp < this.TEMP_MIN)
                 {
-                    System.out.println("Heating on");
+                    out = "heating on";
                 }
                 else if (temp > this.TEMP_MAX)
                 {
-                    System.out.println("Refrigeration on");
+                    out = "refrigeration on";
                 }
                 else
                 {
-                    System.out.println("Suitable temperature");
+                    out = "suitable temperature";
                 }
+                System.out.println("[THERMOSTAT]\t" + out + " (" + temp + "°C)");
             }
             else
             {
@@ -55,7 +58,7 @@ public class CyclicBehaviourAgent extends Agent
 
         public int onEnd()
         {
-            System.out.println("Finalized agent: thermostat");
+            System.out.println("[THERMOSTAT]\tfinalized");
             return 0;
         }
     }

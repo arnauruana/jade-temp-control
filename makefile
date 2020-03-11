@@ -1,11 +1,9 @@
-#!/bin/sh
-
 all: compile
 
 compile: out
-	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/behaviours/*.java
+	javac -cp lib/jade.jar -d out/ -sourcepath src/ src/behaviour/*.java
 
-run:
+gui:
 	java -cp lib/jade.jar:out/ jade.Boot -gui -local-host 127.0.0.1 &
 	ps -o pid,comm | grep java | tr -d [:alpha:],[:space:] > .proc.tmp
 
