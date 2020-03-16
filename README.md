@@ -2,25 +2,25 @@
 
 ## Linux
 
-To compile:
+Compile:
 
 ```bash
 make
 ```
 
-To run the platform and GUI:
+Run the platform and GUI:
 
 ```bash
 make gui
 ```
 
-To generate the agents:
+Generate the agents:
 
 ```bash
 make run
 ```
 
-To clean the project directory:
+Clean the project directory:
 ```bash
 make clean
 ```
