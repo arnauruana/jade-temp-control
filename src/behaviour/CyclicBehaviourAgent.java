@@ -33,9 +33,9 @@ public class CyclicBehaviourAgent extends Agent
 
             if (msg != null)
             {
-                String out;
                 int temp = Integer.parseInt(msg.getContent());
 
+                String out;
                 if (temp < this.TEMP_MIN)
                 {
                     out = "heating on";

@@ -13,7 +13,7 @@ thermometer:
 thermostat:
 	java -cp lib/jade.jar:out/ jade.Boot -local-host 127.0.0.1 -container thermostat:behaviour.CyclicBehaviourAgent\(\) &
 
-run: thermometer thermostat
+run: thermostat thermometer
 
 
 out:
